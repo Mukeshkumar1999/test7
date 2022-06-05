@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td> <input type="text" name="a" id="first" placeholder="Enter a number"> </td>
+        </tr>
+        <tr>
+            <td> <button onclick="fun()">Submit</button> </td>
+        </tr>
+    </table>
+    <div id="num"></div>
+    <div id="num1"></div>
+</body>
+
+<script type="text/javascript">
+    function fun() {
+        n = parseInt(document.getElementById("first").value);
+
+        document.getElementById("num").innerHTML += "Output: " + findPrime(n);
+    }
+    const findPrime = num => {
+        let i, primes = [2, 3], n = 5;
+        const isPrime = n => {
+            let i = 1, p = primes[i],
+                limit = Math.ceil(Math.sqrt(n));
+            while (p <= limit) {
+                if (n % p === 0) {
+                    return false;
+                }
+                i += 1;
+                p = primes[i];
+            }
+            return true;
+        }
+        for (i = 2; i <= num; i += 1) {
+            while (!isPrime(n)) {
+                n += 2;
+            }
+            primes.push(n);
+            n += 2;
+        };
+        return primes[num - 1];
+    }
+</script>
+
+</html>
